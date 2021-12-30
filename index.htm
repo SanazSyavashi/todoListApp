@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="styleSheet" href="styleSheet.css">
+</head>
+
+<body>
+    <div>
+        <div class="flexRow">
+            <div class="imgContainer" id="dog"></div>
+            <div class="imgContainer" id="cat"></div>
+        </div>
+        <div>
+            <button class="btn" onclick="randomDog();">Random Dog!</button>
+            <button class="btn" onclick="randomCat();">Random Cat!</button>
+        </div>
+    </div>
+    <script>
+        let dogHolder = document.querySelector("#dog");
+        let catHolder = document.querySelector("#cat");
+
+        function randomDog() {
+            fetch("https://dog.ceo/api/breeds/image/random")
+                .then(res => res.json())
+                .then(data => dogHolder.innerHTML = `<img src="${data.message}" class="imgClass"/>`)
+        }
+
+        function randomCat() {
+            fetch("https://aws.random.cat/meow")
+                .then(res => res.json())
+                .then(data => catHolder.innerHTML = `<img src="${data.file}" class="imgClass"/>`)
+        }
+    </script>
+</body>
+
+</html>
